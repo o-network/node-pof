@@ -42,12 +42,9 @@ export async function getLedgerFrames(options: FSOptions, party: Party, identifi
   if (!content) {
     return [];
   }
-  const parsed = JSON.parse(content);
-  if (!Array.isArray(parsed)) {
-    throw new TypeError("Ledger document does not represent a JSON Array");
-  }
+  const parsed = content.split('\n');
   const fn = options.getFrameFromRepresentation ? options.getFrameFromRepresentation.bind(undefined, options, party) : getFrameFromRepresentation;
-  return parsed.map(value => fn(value));
+  return parsed.map(value => fn(JSON.parse(value)));
 }
 
 async function ensurePathIsDirectory(options: FSOptions, path: string) {
@@ -80,7 +77,7 @@ export async function appendToLedger(options: FSOptions, ledger: Ledger, frame: 
   await new Promise(
     (resolve, reject) => options.fs.appendFile(
       path,
-      json,
+      `${json}\n`,
       {
         encoding: "utf-8",
         flag: "a+"
