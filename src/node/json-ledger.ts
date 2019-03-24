@@ -75,7 +75,7 @@ export function getRepresentationForFrame(value: AppendedFrame): any {
     ["hash", required("hash", serialiserForUint8Array("hash"))],
     ["nonce", serialiserForUint8Array("nonce")],
     ["timestamp", parserForNumber("timestamp")],
-    ["type", expectOneOf("type", "payload", "trust-exchange", "trust-acceptance", "public-key-acceptance")],
+    ["type", expectOneOf("type", "payload", "trust-exchange", "trust-acceptance", "public-key-acceptance", "hash")],
     ["targetIdentifier", parserForString("targetIdentifier")],
     ["sourceHash", serialiserForUint8Array("sourceHash")],
     ["sourceIdentifier", parserForString("sourceIdentifier")]
@@ -99,7 +99,7 @@ export function getFrameFromRepresentation(value: any): AppendedFrame {
     ["hash", required("hash", parserForUint8Array("hash"))],
     ["nonce", parserForUint8Array("nonce")],
     ["timestamp", parserForNumber("timestamp")],
-    ["type", expectOneOf("type", "payload", "trust-exchange", "trust-acceptance", "public-key-acceptance")],
+    ["type", expectOneOf("type", "payload", "trust-exchange", "trust-acceptance", "public-key-acceptance", "hash")],
     ["targetIdentifier", parserForString("targetIdentifier")],
     ["sourceHash", parserForUint8Array("sourceHash")],
     ["sourceIdentifier", parserForString("sourceIdentifier")]
