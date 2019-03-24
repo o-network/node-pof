@@ -27,7 +27,7 @@ export type PartyOptions = (
 );
 
 export class Party {
-
+  
   private options: PartyOptions;
 
   private ledgers: Map<URLLike, Ledger> = new Map();

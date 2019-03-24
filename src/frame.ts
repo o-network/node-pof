@@ -60,6 +60,7 @@ export type AppendedFrame = (
   Frame &
   {
     index: number,
-    previousHash: Uint8Array
+    previousHash: Uint8Array,
+    signature: Uint8Array
   }
 );

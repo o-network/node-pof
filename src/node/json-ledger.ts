@@ -78,7 +78,8 @@ export function getRepresentationForFrame(value: AppendedFrame): any {
     ["type", expectOneOf("type", "payload", "trust-exchange", "trust-acceptance", "public-key-acceptance", "hash")],
     ["targetIdentifier", parserForString("targetIdentifier")],
     ["sourceHash", serialiserForUint8Array("sourceHash")],
-    ["sourceIdentifier", parserForString("sourceIdentifier")]
+    ["sourceIdentifier", parserForString("sourceIdentifier")],
+    ["signature", required("signature", serialiserForUint8Array("signature"))]
   ];
   const result: any = {};
   expectedKeys.forEach(
@@ -102,7 +103,8 @@ export function getFrameFromRepresentation(value: any): AppendedFrame {
     ["type", expectOneOf("type", "payload", "trust-exchange", "trust-acceptance", "public-key-acceptance", "hash")],
     ["targetIdentifier", parserForString("targetIdentifier")],
     ["sourceHash", parserForUint8Array("sourceHash")],
-    ["sourceIdentifier", parserForString("sourceIdentifier")]
+    ["sourceIdentifier", parserForString("sourceIdentifier")],
+    ["signature", required("signature", parserForUint8Array("signature"))]
   ];
 
   const result: any = {};

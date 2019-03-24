@@ -123,7 +123,8 @@ export class Ledger {
     const newFrame = {
       ...frame,
       index: head.index + 1,
-      previousHash: head.hash
+      previousHash: head.hash,
+      signature: await this.sign(head.hash, frame.hash)
     };
     return (this.options as LedgerWriteOptions).appendToLedger(this, newFrame);
   }
