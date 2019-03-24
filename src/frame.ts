@@ -41,7 +41,12 @@ type FramePublicKey = (
   }
 );
 
-type FrameHash = FrameBase;
+type FrameHash = (
+  FrameBase &
+  {
+    type: "hash"
+  }
+);
 
 export type Frame = (
   FrameWithPayload |
