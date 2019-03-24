@@ -17,6 +17,7 @@ export type GetValueForLedgerWithSource = (ledger: Ledger, value: Serializable) 
 export type LedgerReadOptions = {
   mode: LedgerReadMode,
   getLedgerFrames: GetLedgerFrames;
+  getPublicKey: GetValueForLedger;
 };
 
 export type LedgerWriteOptions = {
@@ -93,7 +94,6 @@ export class Ledger {
   }
 
   async getPublicKey(): Promise<Uint8Array> {
-    this.guard("read-write");
     return (this.options as LedgerWriteOptions).getPublicKey(this);
   }
 

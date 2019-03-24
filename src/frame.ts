@@ -20,7 +20,7 @@ type FrameTrustExchange = (
   FrameBase &
   {
     type: "trust-exchange",
-    targetReference: Uint8Array
+    targetIdentifier: string
   }
 );
 
@@ -29,7 +29,7 @@ type FrameTrustAcceptance = (
   {
     type: "trust-acceptance",
     sourceHash: Uint8Array,
-    sourceReference: Uint8Array
+    sourceIdentifier: string
   }
 );
 

@@ -38,7 +38,7 @@ export class Party {
 
   private getLedgerTypeOptions(): LedgerTypeOptions {
     if (typeof this.options.mode !== "string") {
-      throw new Error("Expected mode provided when creating party if ledger is in use");
+      throw new RangeError("Expected mode provided when creating party if ledger is in use");
     }
     if (this.options.mode === "private") {
       return (this.options as PartyPrivateOptions).ledger;
@@ -46,7 +46,7 @@ export class Party {
     if (this.options.mode === "public") {
       return (this.options as PartyPublicOptions).ledger;
     }
-    throw new Error(`Unknown mode '${this.options.mode}', expected 'private' or 'public'`);
+    throw new RangeError(`Unknown mode '${this.options.mode}', expected 'private' or 'public'`);
   }
 
   getLedger(identifier: URLLike = "file://ledgers/default"): Ledger {
